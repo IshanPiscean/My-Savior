@@ -24,7 +24,15 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;  
 
 public class Settings extends Activity {
-
+         /**
+          *onCreate is our first method to be invoked when we open settings page of our app
+          * All the User interface elements are binded together 
+          * as mentioned in androindmanifest.xml file
+          * I am not using any database to store information. I have a mydata.java class to store results of variables.
+          * 
+          * 
+          * 
+          * /
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,7 +73,9 @@ public class Settings extends Activity {
 	    startActivityForResult(contactPickerIntent2, SMS_CONTACT_PICKER_RESULT);  
 	}  
   
-	
+	/** For saving all the settings information to mydata instance variables 
+	  * A Toast message will be displayed when you click on save button
+	  * /
 	public void callSave(View view) {  
 		TextView tv = (TextView)findViewById(R.id.selected_contact_textview);
         mydata.callNumber = tv.getText().toString();
@@ -81,7 +91,7 @@ public class Settings extends Activity {
         Toast.makeText(getBaseContext(), "INFORMATION SAVED", Toast.LENGTH_SHORT).show();
        //toast saved data!
 	}  
-	
+	//This stores the result of settings page. Values get set here for our mydata.java class variables
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
 	{  
 		if (resultCode == RESULT_OK) {  
@@ -129,7 +139,7 @@ public class Settings extends Activity {
 	       //Log.w(DEBUG_TAG, "Warning: activity result not ok");  
 	    }  
 	}  
-	
+	// When you press RESET Button then all elements get erased
 	public void reset(View view)
 	{
 		EditText etcts = (EditText)findViewById(R.id.SMS_CONTACTS_TEXT);
