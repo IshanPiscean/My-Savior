@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My Savior</string>
+    <string name="hello_world">In Case of Emergency Press Alert Button!</string>
+	<string name="ealert">ALERT</string>
+	<string name="setting">Settings</string>
+	<string name="about">About App</string>
+	<string name="scndttl">About (Image Button)</string>
+	<string name="settings">SETTINGS</string>
+	<string name="exit">Exit App.</string>
+	<string name="Abstract">ABOUT APPLICATION</string>
+	<string name="application"><p>•	Personal safety application that let’s you send out emergency alerts to family and friends in case of road accident, health related emergencies, domestic violence.	    
+			</p></string>
+	<string name="appline2"><p>• Automatically sends emergency message along with a link to google maps having user’s location and then call emergency contact number. 
+Internet independent application.</p></string>
+</resources>

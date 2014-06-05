@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <Button
+        android:id="@+id/SAVE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/EMERGENCY_CONTACT"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="46dp"
+        android:layout_marginLeft="32dp"
+        android:onClick="callSave"
+        android:text="SAVE" />
+
+    <Button
+        android:id="@+id/RESET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/SAVE"
+        android:layout_alignBottom="@+id/SAVE"
+        android:layout_alignRight="@+id/EMERGENCY_CONTACT"
+        android:layout_marginRight="33dp"
+        android:onClick="reset"
+        android:text="RESET" />
+
+    <Button
+        android:id="@+id/SMS_CONTACTS_BUTTON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="ADD CONTACTS FOR MESSAGE" 
+         android:onClick="launchSmsContactPicker"/>
+
+            <EditText
+                android:id="@+id/SMS_CONTACTS_TEXT"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/SMS_CONTACTS_BUTTON"
+                android:ems="10" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/SMS_MESSAGE"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/SMS_CONTACTS_TEXT"
+                android:ems="10" />
+
+            <Button
+                android:id="@+id/EMERGENCY_CONTACT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SMS_MESSAGE"
+                android:layout_centerHorizontal="true"
+                android:onClick="doLaunchContactPicker"
+                android:text="ADD EMERGENCY CONTACT" />
+
+            <TextView
+                android:id="@+id/selected_contact_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/SAVE"
+                android:layout_alignLeft="@+id/SAVE"
+                android:layout_alignRight="@+id/RESET"
+                android:layout_marginBottom="25dp"
+                android:text="ADD EMERGENCY NUMBER" />
+
+</RelativeLayout>
