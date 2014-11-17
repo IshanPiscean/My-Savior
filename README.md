@@ -1,6 +1,6 @@
 My-Savior
 =========
-*Author* : _Ishan Mehta_
+**Author** : _Ishan Mehta_
 **Purpose**
 SoS Android Application for Android Smartphone. Broadcasts emergency alerts to your contacts with just a single click.
 
