@@ -1,15 +1,7 @@
 package com.example.imagebutton;
 
-import java.io.DataOutputStream;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Vector;
-
+import com.example.imagebutton.R;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -29,27 +21,11 @@ public class MainActivity extends Activity implements LocationListener{
 	protected LocationManager locationManager;
 	protected LocationListener locationListener;
 	protected Context context;
-//DISPLAY PAGE CODE
+//DISPLAY PAGE 
 	@Override
 	protected void onDestroy() 
 	{
-		super.onDestroy();	
-		try
-		{
-			File cacheDir = getCacheDir();
-			File file = new File(cacheDir.getAbsoluteFile(), "mydata.txt");
-			FileOutputStream fos = new FileOutputStream(file, false);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(mydata.callNumber);
-			oos.writeObject(mydata.message);
-			oos.writeObject(mydata.msgNumber);
-			oos.close();
-			fos.close();
-		}
-		catch(Exception e)
-		{
-			
-		}
+		super.onDestroy();
 		
 	}
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,22 +33,6 @@ public class MainActivity extends Activity implements LocationListener{
 		setContentView(R.layout.activity_main);
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-		try
-		{
-			File cacheDir = getCacheDir();
-			File file = new File(cacheDir.getAbsoluteFile(), "mydata.txt");
-			FileInputStream fos = new FileInputStream(file);
-			ObjectInputStream oos = new ObjectInputStream(fos);
-			mydata.callNumber = (String)oos.readObject();
-			mydata.message = (String)oos.readObject();
-			mydata.msgNumber = (Vector<String>)oos.readObject();
-			oos.close();
-			fos.close();
-		}
-		catch(Exception e)
-		{
-			
-		}
 	}
 	
 	@Override
@@ -105,16 +65,18 @@ public class MainActivity extends Activity implements LocationListener{
 	            return super.onOptionsItemSelected(item);
 	    }
 	}
-	
-	//NOT USED ANYWHERE!
+	// ALERT BUTTON 
 	public void callAlert(View view)
 	{
 		
 		SmsManager sms = SmsManager.getDefault();
-		for(int i=0;i<mydata.msgNumber.size();i++)
+		for(int i=0;i<mydata.SMSNumber.size();i++)
 		{
-			sms.sendTextMessage(mydata.msgNumber.elementAt(i).toString(), null, mydata.message, null, null);
-			Toast.makeText(getApplicationContext(), "Message Sent to : " + mydata.msgNumber.elementAt(i).toString(), Toast.LENGTH_LONG).show();
+			//mydata.SMSNumber.get(i);
+			sms.sendTextMessage(mydata.SMSNumber.get(i).toString(), null, mydata.message, null, null);
+			Toast.makeText(getApplicationContext(), "Message Sent to : " + mydata.SMSNumber.get(i).toString(), Toast.LENGTH_LONG).show();
+			//sms.sendTextMessage(mydata.SMSNumber.elementAt(i).toString(), null, mydata.message, null, null);
+		    //Toast.makeText(getApplicationContext(), "Message Sent to : " + mydata.SMSNumber.elementAt(i).toString(), Toast.LENGTH_LONG).show();
 		}
 		Toast.makeText(getApplicationContext(), "All Messages sent successfully ", Toast.LENGTH_LONG).show();
 		Intent callIntent  = new Intent(android.content.Intent.ACTION_CALL, Uri.parse("tel:" + mydata.callNumber));
